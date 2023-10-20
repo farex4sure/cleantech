@@ -79,6 +79,8 @@
                                     Buy
                                 </a>
                             </div>
+                            
+                            <div id="chat-container"></div>
                             <div class='flex flex-col h-full'>
                                 <p class="text-xl py-2 font-semibold">Power Consumption</p>
                                 <div class=" w-full px-4 bg-white bg-opacity-25 border border-gray-200 rounded-lg shadow">
@@ -97,6 +99,26 @@
             </div>
         </main>
         <!-- MAIN ENDS HERE -->
+
+        <div class="fixed bottom-12 right-2">
+            <button id="chat-button" class="w-20 h-20 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-full shadow-md">
+                <div class="text-4xl">
+                    <i class="fa-brands fa-rocketchat"></i>
+                    
+                </div>
+            </button>
+        </div>
+    
+        <!-- <script>
+            // JavaScript to toggle the chat window when the button is clicked
+            const chatButton = document.getElementById('chat-button');
+            const chatWindow = document.getElementById('chat-window');
+    
+            chatButton.addEventListener('click', () => {
+                chatWindow.classList.toggle('hidden');
+            });
+        </script> -->
+          
         
         <!-- FOOTER STARTS HERE -->
         <footer class='flex w-full justify-center p-3 px-0 border-t border-1 bg-gray-300 bg-opacity-25'>
@@ -140,31 +162,6 @@
             </div>
         </div>
     <!-- MODAL SECTION ENDS HERE -->
-    
-    <script>
-        document.querySelector('.toggle-show-balance').addEventListener('click',
-        (e) => {
-            e.currentTarget.querySelectorAll('.toggle-show-balance-btn')
-            .forEach(btn => {
-            btn.classList.toggle('hidden')
-            })
-            if (e.currentTarget.classList.contains('show')) {
-                e.currentTarget.classList.remove('show');
-                e.currentTarget.classList.add('hide');
-                document.querySelector('.alternate-account-balance')
-                .classList.remove('hidden');
-                document.querySelector('.account-balance')
-                .classList.add('hidden');
-            } else {
-                e.currentTarget.classList.remove('hide');
-                e.currentTarget.classList.add('show');
-                document.querySelector('.alternate-account-balance')
-                .classList.add('hidden');
-                document.querySelector('.account-balance')
-                .classList.remove('hidden');
-            }
-        })
-    </script>
 
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -288,9 +285,7 @@
                 chart.render();
             }
         });
-    </script>
-
-    
+    </script>  
     <script>
         // ApexCharts options and config
         window.addEventListener("load", function() {
@@ -405,8 +400,6 @@
             }
         });
     </script>
-
-
     <script>
         // ApexCharts options and config
         window.addEventListener("load", function() {
@@ -483,5 +476,38 @@
         }
         });
     </script>
+
+    <script>
+        const chatButton = document.getElementById('chat-button')
+
+        window.watsonAssistantChatOptions = {
+        // A UUID like '1d7e34d5-3952-4b86-90eb-7c7232b9b540' included in the embed code.
+        integrationID: "5ee473da-c3cd-4d17-9a85-787b8b7936a5",
+        // Your assistants region e.g. 'us-south', 'us-east', 'jp-tok' 'au-syd', 'eu-gb', 'eu-de', etc.
+        region: "au-syd",
+        // A UUID like '6435434b-b3e1-4f70-8eff-7149d43d938b' included in the embed code.
+        serviceInstanceID: "19bf7abc-7b14-4ab9-a854-e76151dffe7c",
+        // The callback function that is called after the widget instance has been created.
+        
+        
+        onLoad: function(instance) {
+            instance.render();
+        },
+        showLauncher: false, // Hide the web chat launcher, you will open the WebView from your mobile application
+        openChatByDefault: true, // When the web chat WebView is opened, the web chat will already be open and ready to go.
+        hideCloseButton: true // And the web chat will not show a close button, instead relying on the controls to close the WebView
+        };
+        chatButton.addEventListener('click', () => {
+            const t=document.createElement('script');
+            t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+            document.head.appendChild(t);
+            chatWindow.classList.toggle('hidden');
+        });
+        // setTimeout(function(){
+        // });
+    </script>
+    <!-- Add this to the <head> section of your HTML file -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ibm-watson/assistant-web-chat/3.0.0/index.js"></script> -->
+
 </body>
 </html>
