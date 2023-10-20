@@ -101,12 +101,12 @@
         <!-- MAIN ENDS HERE -->
 
         <div class="fixed bottom-12 right-2">
-            <button id="chat-button" class="w-20 h-20 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-full shadow-md">
+            <a href="chat.html" class="w-20 h-20 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-full shadow-md">
                 <div class="text-4xl">
                     <i class="fa-brands fa-rocketchat"></i>
                     
                 </div>
-            </button>
+            </a>
         </div>
     
         <!-- <script>
@@ -477,7 +477,7 @@
         });
     </script>
 
-    <script>
+    <!-- <script>
         const chatButton = document.getElementById('chat-button')
 
         window.watsonAssistantChatOptions = {
@@ -501,11 +501,11 @@
             const t=document.createElement('script');
             t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
             document.head.appendChild(t);
-            chatWindow.classList.toggle('hidden');
+            chatButton.classList.toggle('hidden');
         });
         // setTimeout(function(){
         // });
-    </script>
+    </script> -->
     <!-- Add this to the <head> section of your HTML file -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ibm-watson/assistant-web-chat/3.0.0/index.js"></script> -->
 
